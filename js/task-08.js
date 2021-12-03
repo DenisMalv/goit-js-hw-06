@@ -5,20 +5,22 @@ const inputPassword = form.password
 
 form.addEventListener("submit", formSubmit)
 
+
 function formSubmit(event) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget);
-
-     formData.forEach((value, name) => {
-
-        if (value.trim() === '' ) {
-            inputEmail.focus()
-        alert(`Все поля должны быть заполнены!`)
-        }
-       
-       console.log({ [name]: value })
-       form.reset()
-
-    })
+    
+    if (inputEmail.value.trim() === '' || inputPassword.value.trim()==='') {
+     return alert(`Все поля должны быть заполнены!`)
+    } else {
+        formData.forEach((value, name) => {
+           console.log({ [name]: value })
+           return form.reset() 
+        })
+    }
+   
+   
+   
+ 
 }
 
