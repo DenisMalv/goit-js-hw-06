@@ -8,21 +8,20 @@ form.addEventListener("submit", formSubmit)
 
 function formSubmit(event) {
     event.preventDefault()
-    const formElements = event.currentTarget.elements
+    const { email, password } = event.currentTarget.elements
 
-    const formData = new FormData(event.currentTarget);
-    console.dir(formElements)
-
-    if (formElements.email.value.trim() === '' || formElements.password.value.trim()==='') {
-     return alert(`Все поля должны быть заполнены!`)
-    } else {
-        console.log(
-            {
-                [formElements.email.name]: formElements.email.value,
-                [formElements.password.name]: formElements.password.value,
-            }
-        )
-        return form.reset() 
+    if (email.value.trim() === '' || password.value.trim() === '') {
+        return alert(`Все поля должны быть заполнены!`)
     }
+    const formData = new FormData(event.currentTarget);
+    // // console.dir(formElements)
+    const dataValue = {}
+    formData.forEach((value, name) => dataValue[name] = value)
+    console.log(dataValue)
+    form.reset()
 }
+
+    
+    
+
 
