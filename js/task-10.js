@@ -12,21 +12,26 @@ console.log(createButton)
 console.log(destroyButton)
 console.log(boxes)
 // const numberOfboxes = input.addEventListener('input', (e) => e.currentTarget.value)
-
-
+let width = 30
+let height = 30
+input.value = 0
 createButton.addEventListener('click', () => createBoxes(input.value)
 )
-destroyButton.addEventListener('click',() => boxes.innerHTML = '')
+destroyButton.addEventListener('click', () => {
+  boxes.innerHTML = ''
+  width = 30
+  height = 30
+  input.value = 0
+})
 
 function createBoxes(amount) {
-    let width = 30
-    let height = 30
-  
+ 
   for (let i = 1; i <= amount; i += 1){
-
+    
     boxes.insertAdjacentHTML("beforeend", `<div style="width: ${width}px; height: ${height}px; background-color: ${getRandomHexColor()};"></div >`)
     width += 10
     height += 10
     
   }
+  
 }
